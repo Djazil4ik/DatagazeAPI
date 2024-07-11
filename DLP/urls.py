@@ -1,14 +1,19 @@
-from django.urls import path
+from django.urls import path, include
 from .views import *
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+
+router.register('dlp', DatagazeDLPViewSet)
+router.register('parts', PartsViewSet)
+router.register('features', FeaturesViewSet)
+router.register('channels', ChannelViewSet)
+router.register('env', EnvironmentViewSet)
+router.register('i-c', I_and_CViewSet)
+router.register('screenshots', ScreenshotViewSet)
+router.register('videos', VideoViewSet)
+router.register('orders', OrderViewSet)
 
 urlpatterns = [
-    path('dlp/', DatagazeDLPViewSet.as_view(), name='dlp'),
-    path('parts/', PartsViewSet.as_view(), name='parts'),
-    path('features/', FeaturesViewSet.as_view(), name='features'),
-    path('channels/', ChannelViewSet.as_view(), name='channels'),
-    path('env/', EnvironmentViewSet.as_view(), name='env'),
-    path('i-c/', I_and_CViewSet.as_view(), name='i-c'),
-    path('screenshot/', ScreenshotViewSet.as_view(), name='screenshot'),
-    path('video/', VideoViewSet.as_view(), name='video'),
-    path('order/', OrderViewSet.as_view(), name='order'),
+    path('', include(router.urls)),
 ]

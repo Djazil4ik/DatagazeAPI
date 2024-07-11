@@ -1,4 +1,6 @@
 JAZZMIN_SETTINGS = {
+    "language_chooser": True,
+    
     # title of the window (Will default to current_admin_site.site_title if absent or None)
     "site_title": "Datagaze Admin",
 
@@ -53,7 +55,7 @@ JAZZMIN_SETTINGS = {
         {"model": "auth.User"},
 
         # App with dropdown menu to all its models pages (Permissions checked against models)
-        {"app": "books"},
+        {"app": "main_page"},
     ],
 
     #############
@@ -141,7 +143,10 @@ JAZZMIN_SETTINGS = {
     # Whether to link font from fonts.googleapis.com (use custom_css to supply font otherwise)
     "use_google_fonts_cdn": True,
     # Whether to show the UI customizer on the sidebar
-    "show_ui_builder": False,
+    "show_ui_builder": True,
+    
+    "theme": "darkly",
+    "dark_mode_theme": "darkly",
 
     ###############
     # Change view #

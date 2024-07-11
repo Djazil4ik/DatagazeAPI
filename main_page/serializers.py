@@ -4,24 +4,24 @@ from .models import Home, Certificate, FieldOfActivity, Partner, Contact
 class HomeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Home
-        fields = '__all__'
+        fields = ('id', 'title', 'about', 'img')
 
 class CertificateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Certificate
-        fields = '__all__'
+        fields = ('id', 'title', 'about', 'img')
 
 class FieldOfActivitySerializer(serializers.ModelSerializer):
     class Meta:
         model = FieldOfActivity
-        fields = '__all__'
+        fields = ('id', 'title', 'num')
 
 class PartnerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Partner
-        fields = '__all__'
+        fields = ('id', 'name', 'url')
 
 class ContactSerializer(serializers.ModelSerializer):
     class Meta:
         model = Contact
-        fields = '__all__'
+        fields = ('id', 'title', 'icon')

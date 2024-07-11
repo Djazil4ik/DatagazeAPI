@@ -1,39 +1,48 @@
-from rest_framework import generics
+from rest_framework import viewsets, mixins
 from .models import *
 from .serializers import *
 
-class DatagazeDLPViewSet(generics.ListCreateAPIView):
+
+class DatagazeDLPViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
     queryset = DatagazeDLP.objects.all()
     serializer_class = DatagazeDLPSerializer
 
-class PartsViewSet(generics.ListCreateAPIView):
+
+class PartsViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
     queryset = Parts.objects.all()
     serializer_class = PartsSerializer
 
-class FeaturesViewSet(generics.ListCreateAPIView):
+
+class FeaturesViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
     queryset = Features.objects.all()
     serializer_class = FeaturesSerializer
 
-class ChannelViewSet(generics.ListCreateAPIView):
+
+class ChannelViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
     queryset = Channel.objects.all()
     serializer_class = ChannelSerializer
 
-class EnvironmentViewSet(generics.ListCreateAPIView):
+
+class EnvironmentViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
     queryset = Environment.objects.all()
     serializer_class = EnvironmentSerializer
 
-class I_and_CViewSet(generics.ListCreateAPIView):
+
+class I_and_CViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
     queryset = I_and_C.objects.all()
     serializer_class = I_and_CSerializer
 
-class ScreenshotViewSet(generics.ListCreateAPIView):
+
+class ScreenshotViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
     queryset = Screenshot.objects.all()
     serializer_class = ScreenshotSerializer
 
-class VideoViewSet(generics.ListCreateAPIView):
+
+class VideoViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
     queryset = Video.objects.all()
     serializer_class = VideoSerializer
 
-class OrderViewSet(generics.ListCreateAPIView):
+
+class OrderViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer

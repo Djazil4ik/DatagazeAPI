@@ -2,10 +2,14 @@ from django.urls import path, include
 from .views import HomeViewSet, CeritificateViewSet, PartnerViewSet, ContactViewSet, FieldOfActivityViewSet
 from rest_framework import routers
 
+router = routers.DefaultRouter()
+
+router.register('home', HomeViewSet)
+router.register('certificate', CeritificateViewSet)
+router.register('partner', PartnerViewSet)
+router.register('contact', ContactViewSet)
+router.register('fieldsofactivity', FieldOfActivityViewSet)
+
 urlpatterns = [
-    path('home/', HomeViewSet.as_view()),
-    path('certificate/', CeritificateViewSet.as_view()),
-    path('partner/', PartnerViewSet.as_view()),
-    path('contact/', ContactViewSet.as_view()),
-    path('fieldsofactivity/', FieldOfActivityViewSet.as_view()),
+    path('', include(router.urls)),
 ]

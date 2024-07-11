@@ -5,6 +5,7 @@ from django.conf.urls.static import static
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
+from django.views.i18n import set_language
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -21,8 +22,8 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('i18n/', set_language, name='set_language'),
     path('main/', include('main_page.urls')),
-    path('navbar/', include('products_servises_navbar.urls')),
     path('dlp/', include('DLP.urls')),
     path('news/', include('news.urls')),
     path('about_us/', include('about_us.urls')),

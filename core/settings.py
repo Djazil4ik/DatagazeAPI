@@ -11,7 +11,9 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 from .juzzmin import JAZZMIN_SETTINGS
+from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -34,23 +36,38 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [ 
     'jazzmin',
     'main_page',
-    'products_servises_navbar',
     'DLP',
     'news',
     'about_us',
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'modeltranslation',
+    'django.contrib.admin',
     'rest_framework',
     'drf_yasg',
 ]
 
+LANGUAGES = (
+    ('en', _('English')),
+    ('ru', _('Russian')),
+    ('uz', _('Uzbek')),
+)
+
+LOCALE_PATH = [
+    BASE_DIR / 'locale/',
+]
+
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
+
+MODELTRANSLATION_LANGUAGES = ('en', 'ru', 'uz')
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -63,7 +80,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates/')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -71,6 +88,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.i18n',
             ],
         },
     },
